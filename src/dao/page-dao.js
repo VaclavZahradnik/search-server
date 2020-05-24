@@ -1,6 +1,6 @@
 import arangojs from 'arangojs';
 
-import { getDb, getCollection } from './arango-db.js';
+import { getDb } from './arango-db.js';
 
 const aql = arangojs.aql;
 
@@ -38,6 +38,22 @@ export class PageDao {
     const result = await cursor.all();
 
     return result;
+  }
+
+  async cache(url) {
+    let db = getDb();
+
+    let query = aql`
+      for p in pages
+      filter p.url == ${url}
+      limit 1
+      return { id: p._id, title: p.title, text: p.text, favicon: p.favicon }
+    `;
+
+    const cursor = await db.query(query);
+    const result = await cursor.all();
+
+    return result[0];
   }
 }
 
