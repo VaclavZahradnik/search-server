@@ -9,4 +9,9 @@ app.use(express.json());
 app.use('/search', searchRouter);
 app.use('/cache', cacheRouter);
 
+app.use((err, _req, res) => {
+  res.status(500);
+  res.render('error', { error: err });
+});
+
 app.listen(environment.server.port, () => console.log(`Listening on port ${environment.server.port}`));

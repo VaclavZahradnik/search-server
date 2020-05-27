@@ -33,7 +33,7 @@ git clone https://github.com/VaclavZahradnik/search-crawler
 
 Modify `env/development.json` in `search-server` and `search-crawler` repositories and change user name and password to access ArangoDb database.
 
-Switch to search-crawler repository and initialize the search-example database by running:
+Switch to `search-crawler` repository and initialize the search-example database by running:
 
 ```
 npm install
@@ -49,6 +49,6 @@ npm start
 
 Optionaly, you can run search-crawler independently or not at all.
 
-# Search engine example web crawler
+# Search engine example backend
 
 This repository is the backend REST service for `search-react` frontend.
